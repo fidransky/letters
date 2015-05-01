@@ -1,0 +1,50 @@
+#edit-comment,
+#reply-comment { margin-bottom: 20px; }
+
+#edit-comment *,
+#reply-comment * { margin-bottom: 6px; }
+
+.comment {
+  clear: both;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E2E2E2;
+}
+
+.close-comment-info {
+  cursor: pointer;
+  margin: 0 0 -4px 8px;
+}
+
+.gravatar {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 8px 10px 3px 0;
+}
+
+.meta {
+  display: block;
+  font-size: 14px;
+  margin-left: 60px;
+  padding: 5px;
+  background-color: #F3F3F3;
+}
+
+.checkbox {
+  position: relative; top: 1px;
+  margin: 0 8px 0 0;
+}
+
+.actions { font-size: 12px; }
+
+.actions a { color: #000; text-decoration: none; }
+
+.url_clanek {
+  font-size: 12px;
+  float: right;
+  margin-top: 6px;
+}
+
+input[name=akce],
+button[name=akce] { height: 26px; }

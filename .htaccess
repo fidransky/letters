@@ -1,0 +1,54 @@
+# vychozi stranka
+DirectoryIndex index.php
+RewriteEngine On
+
+<IfModule php5_module>
+  php_value session.cookie_httponly true
+  php_value session.use_only_cookies true
+  php_value session.use_trans_sid false
+</IfModule>
+
+# oprava vic uvodnich stranek se stejnym obsahem
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^index\.php$ [INSERT_URL] [R=301,L]
+
+# kategorie
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^kategorie/([\w/]+)/([0-9]+)/?$  ?page=clanky&kategorie=$1&pg=$2 [QSA]
+RewriteRule ^kategorie/([\w/]+)/?$ 	      ?page=clanky&kategorie=$1 [QSA]
+RewriteRule ^kategorie/?$ 	              ?page=clanky&kategorie [QSA]
+
+# vyhledavani
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^vyhledavani/?$               ?page=clanky&q= [QSA]
+
+# RSS
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^rss/([\w/]+)/?$ 	            pluginy/clanky/frontend/rss.php?kategorie=$1 [QSA]
+RewriteRule ^rss/?$                       pluginy/clanky/frontend/rss.php [QSA]
+
+# RSS komentaru
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^komentare/rss/([\w/]+)/?$ 	  pluginy/komentare/frontend/rss.php?clanek=$1 [QSA]
+RewriteRule ^komentare/rss/?$ 	          pluginy/komentare/frontend/rss.php [QSA]
+
+# soubory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^stranka/soubory/?$           ?page=soubory [QSA]
+
+# uzivatele
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^uzivatele/(prihlaseni|registrace|zapomenute_heslo)/?$      ?page=uzivatele&stranka=$1 [QSA]
+RewriteRule ^uzivatele/(\w+)/?$           ?page=uzivatele&id=$1 [QSA]
+RewriteRule ^uzivatele/?$ 	              ?page=uzivatele [QSA]
+
+#LAST clanky (musi byt az jako posledni rewrite)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9-\_]+)/?$            ?page=clanky&clanek=$1 [QSA]

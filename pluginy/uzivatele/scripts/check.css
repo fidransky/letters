@@ -1,0 +1,27 @@
+#result span,
+#same span {
+  padding: 1px 3px;
+  border: 3px solid;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.short,
+.weak {
+  color: #D12F19;
+  background-color: #FBE3E4;
+  border-color: #FBC2C4;
+}
+
+.good {
+  color: #BFA300;
+  background-color: #EFE7B8;
+  border-color: #E1BF00;
+}
+
+.strong {
+  color: #529214;
+  background-color: #E6EFC2;
+  border-color: #C6D880;
+}

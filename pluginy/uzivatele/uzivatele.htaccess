@@ -1,0 +1,6 @@
+# uzivatele
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^uzivatele/(prihlaseni|registrace|zapomenute_heslo)/?$      ?page=uzivatele&stranka=$1 [QSA]
+RewriteRule ^uzivatele/(\w+)/?$           ?page=uzivatele&id=$1 [QSA]
+RewriteRule ^uzivatele/?$ 	              ?page=uzivatele [QSA]

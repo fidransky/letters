@@ -1,0 +1,5 @@
+# RSS komentaru
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^komentare/rss/([\w/]+)/?$ 	  pluginy/komentare/frontend/rss.php?clanek=$1 [QSA]
+RewriteRule ^komentare/rss/?$ 	          pluginy/komentare/frontend/rss.php [QSA]
