@@ -6,12 +6,12 @@ Pokud tomu tak je, vytvořte v administraci hostingu novou databázi. Server, jm
 
 ## Nová instalace:
 - rozbalený archiv nahrajte na server (např. pomocí FTP)
-- otevřete váš web, spuste čistou instalaci a řiďte se pokyny prùvodce
+- otevřete váš web, spusťte čistou instalaci a řiďte se pokyny prùvodce
 
 ## Aktualizace:
-- aktualizovat musíte popořadě (1.2 -> 1.3, nikoliv však 1.1 -> 1.3)
+- aktualizovat musíte popořadě (1.2 > 1.3, nikoliv však 1.1 > 1.3)
 - před aktualizací si pro jistotu zálohujte veškerá data
 - průvodce obstará aktualizaci databáze, zbytek je na vás
 
 - rozbalený archiv nahrajte na server (např. pomocí FTP)
-- otevřete váš web, spuste aktualizaci a řiďte se pokyny průvodce.
+- otevřete váš web, spusťte aktualizaci a řiďte se pokyny průvodce.
