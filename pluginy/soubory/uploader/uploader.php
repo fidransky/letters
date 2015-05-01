@@ -5,13 +5,10 @@ $count = count($files["tmp_name"]);
 if (isSet($_GET["ajax"])) {
   $cesta = "../../";
   define("PLUGINS_DIR", $cesta);
-  define("TEMPLATES_DIR", $cesta."../vzhledy/");
-  
   include (dirname(__FILE__)."/../../../letters/config.php");
   include (dirname(__FILE__)."/../../../funkce/get_data.php");
   include (dirname(__FILE__)."/../../../funkce/bez_diakritiky.php");
   include (dirname(__FILE__)."/../../../funkce/include_plugin_admin.php");
-  
   $sort = $_GET["sort"];
   $koncovky = explode(", ", $_GET["allowed_types"]);
 }

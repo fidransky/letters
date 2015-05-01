@@ -42,7 +42,7 @@ foreach ($articles as $i => $article) {
   
   // text
   if (!empty($article["heslo"]) and !check_user2("clanky_s_heslem") and !isSet($_SESSION["clanek_".$article["alias"]."_pristup"]))
-    $article["text"] = "<p class=\"error\">".__("Tento článek je přístupný pouze s heslem.")."</p><form method=\"post\" action=\"".$permalink."\" class=\"locked-article\"><input type=\"password\" name=\"password\" size=\"15\" title=\"".__("zadejte heslo pro přístup")."\" class=\"input\"><input type=\"submit\" value=\"".__("Pokračovat")."\"></form>";
+    $article["text"] = "<p class=\"error\">".__("Tento článek je přístupný pouze s heslem.")."</p><form method=\"post\" action=\"".$meta["permalink"]."\" class=\"locked-article\"><input type=\"password\" name=\"password\" size=\"15\" title=\"".__("zadejte heslo pro přístup")."\" class=\"input\" required><input type=\"submit\" value=\"".__("Pokračovat")."\"></form>";
   else {
     include_plugins("text editor", array("action" => "modify"), $article);
     

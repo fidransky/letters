@@ -29,7 +29,7 @@ if (!empty($article["heslo"]) and !check_user2("clanky_s_heslem") and !isSet($_S
   $article["text"] = "<p class=\"error\">";
   if (isSet($_POST["password"]) and sha1($_POST["password"]) != $article["heslo"]) $article["text"] .= __("Bylo zadáno špatné heslo.");
   else $article["text"] .= __("Tento článek je přístupný pouze s heslem.");
-  $article["text"] .= "</p><form method=\"post\" action=\"".$permalink."\" class=\"locked\"><input type=\"password\" name=\"password\" size=\"15\" title=\"".__("zadejte heslo pro přístup")."\" class=\"input\"><input type=\"submit\" value=\"".__("Pokračovat")."\"></form>";
+  $article["text"] .= "</p><form method=\"post\" action=\"".$meta["permalink"]."\" class=\"locked\"><input type=\"password\" name=\"password\" size=\"15\" title=\"".__("zadejte heslo pro přístup")."\" class=\"input\" required autofocus><input type=\"submit\" value=\"".__("Pokračovat")."\"></form>";
 }
 else
   include_plugins("text editor", array("action" => "modify"), $article);

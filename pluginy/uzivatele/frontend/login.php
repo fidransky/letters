@@ -14,5 +14,3 @@ if ($count > 1)
   echo "<script src=\"letters/scripts/multiple_login_forms.jquery.js\"></script>";
 echo "</div>";
 ?>
-
-<!-- DONT CACHE ME PLEASE -->

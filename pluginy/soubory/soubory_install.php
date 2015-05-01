@@ -19,7 +19,7 @@ mysql_query("INSERT INTO `".DB_PREFIX."nastaveni` (`name`, `value`, `group`) VAL
 mysql_query("UPDATE ".DB_PREFIX."nastaveni SET value=CONCAT(value, '&upload_souboru=1&zobrazeni_souboru=1') WHERE name='rights_admin'");
 
 // přidání menu a podmenu
-add_menu($plugin["name"], "novy_soubor", "Soubory", true);
+add_menu($plugin["name"], "novy_soubory", "Soubory", true);
 add_podmenu("new", $plugin["name"], "soubory", "nový soubor");
 add_podmenu("new", $plugin["name"], "soubory", "prohlížeč");
 add_podmenu("new", $plugin["name"], "nastaveni", "soubory", true);

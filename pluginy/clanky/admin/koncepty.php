@@ -86,7 +86,7 @@ else {
 include (PLUGINS_DIR."clanky/scripts/list.php");
 ?>
 
-<script src="<?php echo PLUGINS_DIR; ?>clanky/scripts/jquery.filter.js"></script>
+<script src="<?php echo PLUGINS_DIR; ?>clanky/scripts/filter.jquery.js"></script>
 
 <form method="post" style="float: left;">
 <select name="id" size="1" id="select">

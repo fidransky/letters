@@ -8,7 +8,7 @@ if (check_user2("author")) {
     $pocet_koncepty = get_count("clanky", "zverejneno='0' OR (zverejneno='1' AND cas>NOW())");
     echo ", z toho <a href=\"letters.php?page=clanky&co=koncepty\">".sklonuj($pocet_koncepty, "rozepsaný článek", "rozepsané články", "rozepsaných článků")."</a>";
   }
-  echo ".<br><a href=\"letters.php?page=clanky&co=novy_clanek\" class=\"small_label\">napsat nový článek &raquo;</a>";
+  echo ".<br><span class=\"small_label\"><a href=\"letters.php?page=clanky&co=novy_clanek\">napsat nový článek &raquo;</a></span>";
 
   echo "</div>";
 }

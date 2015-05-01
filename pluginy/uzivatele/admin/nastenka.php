@@ -7,7 +7,7 @@ if (check_user2("upravy_uzivatelu")) {
     if ($count != 0) {
       echo "<div class=\"box\">";
       echo sprintf(sklonuj($count, "Na schválení čeká jeden uživatel.", "Na schválení čekají %d uživatelé.", "Na schválení čeká %d uživatelů.", false), $count);
-      echo "<br><a href=\"letters.php?page=uzivatele&co=prehled\" class=\"small_label\">schválit uživatele &raquo;</a>";
+      echo "<br><a href=\"letters.php?page=uzivatele&co=prehled\">schválit uživatele &raquo;</a>";
       echo "</div>";
     }
   }

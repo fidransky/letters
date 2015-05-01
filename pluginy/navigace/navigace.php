@@ -11,13 +11,13 @@ function links_categories($set, $parents=null) {
 
     $echo = "<li".(empty($parents) ? " class=\"root\"" : null)."><a href=\"kategorie/".$category["alias"]."\" title=\"".__($category["popis"], "category")."\">".__($category["jmeno"], "category")."</a>";
 
-    if ($set["navigace_show_count"] == 1 or $set["navigace_hide_empty"] == 1)
+    if ($set["navigation_show_count"] == 1 or $set["navigation_hide_empty"] == 1)
       $count = get_count("clanky", "(kategorie='".$category["alias"]."' OR kategorie REGEXP '".$category["alias"]."[[:>:]]') AND zverejneno='1' AND cas<='".date("Y-m-d H:i:s", time())."' AND zobrazit='1'");
       
-    if ($set["navigace_show_count"] == 1)
+    if ($set["navigation_show_count"] == 1)
       $echo .= " <span class=\"count\">{".$count."}</span>";
 
-    if ($set["navigace_hide_empty"] == 0)
+    if ($set["navigation_hide_empty"] == 0)
       echo $echo;
     else
       if ($count != 0) echo $echo;
@@ -41,7 +41,7 @@ echo "<ul id=\"links\">";
 echo "<li><a href=\"".$lrs["address"]."\" title=\"".__("úvodní strana")."\"><strong>".__("úvodní strana")."</strong></a></li>";
 echo "<li><a href=\"kategorie/vsechny\" title=\"".__("všechny články")."\">".__("všechny články")."</a></li>";
 
-if ($set["navigace_show_categories"] == 1)
+if ($set["navigation_show_categories"] == 1)
   links_categories($set);
 echo "</ul>";
 

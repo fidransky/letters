@@ -69,7 +69,7 @@ else {
 
 
 // úvodní zobrazení
-echo __("Pro obnovení hesla zadejte Váš registrovaný e-mail nebo uživatelské jméno.");
+echo "<p>".__("Pro obnovení hesla zadejte Váš registrovaný e-mail nebo uživatelské jméno.")."</p>";
 ?>
 
 <form method="post" id="lost-password">
