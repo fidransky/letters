@@ -1,3 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Pontano+Sans&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext);
+
+
+
 html { height: 100%; }
 
 body {
@@ -5,7 +10,7 @@ body {
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
-  font: 14px calibri, verdana, arial, sans-serif;
+  font: 14px 'Segoe WP', calibri, verdana, arial, sans-serif;
 }
 
 nav { display: block; }
@@ -32,7 +37,11 @@ h3 {
   margin-bottom: 8px;
 }
 
-h3 a { font-style: normal; color: #000; text-decoration: none; }
+h3 a {
+  font-style: normal;
+  color: #000;
+  text-decoration: none;
+}
 
 h4 {
   font-style: italic;
@@ -41,7 +50,10 @@ h4 {
   margin: 8px 0 4px 0;
 }
 
-a { text-decoration: underline; color: #000080; }
+a {
+  color: #000080;
+  text-decoration: underline;
+}
 
 a:hover,
 a:focus { color: #000; }
@@ -59,7 +71,10 @@ small {
 
 abbr,
 acronym,
-.help { cursor: help; border-bottom: 1px dotted; }
+.help {
+  cursor: help;
+  border-bottom: 1px dotted;
+}
 
 
 table {
@@ -134,7 +149,12 @@ legend {
 }
 .success a { color: green; }
 
-span.success { background: white; padding: 0; margin: 0; border: 0; }
+span.success {
+  background: white;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
 
 .error {
   width: 50%; max-width: 80%;
@@ -146,7 +166,12 @@ span.success { background: white; padding: 0; margin: 0; border: 0; }
 }
 .error a { color: red; }
   
-span.error { background: white; padding: 0; margin: 0; border: 0; }
+span.error {
+  background: white;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
 
 .info a,
 .error a,
@@ -222,13 +247,15 @@ a.logo img {
 }
 a.logo:hover img { opacity: 1; }
 
-#lrs_menu #lrs_fixed {
-  position: fixed;
-  z-index: 4;
-  background-color: black;
+@media only screen and (min-width: 940px) {
+  #lrs_menu #lrs_fixed {
+    position: fixed;
+    z-index: 4;
+    background-color: black;
+  }
+  
+  #lrs_menu #lrs_fixed + a { margin-top: 137px; }
 }
-
-#lrs_menu #lrs_fixed + a { margin-top: 137px; }
 
 
 /* navigační tlačítka */
@@ -447,9 +474,14 @@ nav a img.flag { position: absolute; top: 5px; right: 10px; }
   background-color: #FFF;
 }
 
-.doplnek li span { color: gray; }
+.doplnek li span {
+  color: gray;
+}
 
-.doplnek li.download span { font-size: 0.8em; color: gray; }
+.doplnek li.download span {
+  font-size: 0.8em;
+  color: gray;
+}
 
 #loading {
   display: block;
@@ -466,4 +498,65 @@ nav a img.flag { position: absolute; top: 5px; right: 10px; }
   padding: 3px 8px;
   margin: 0 2px;
   background-color: #F3F3F3;
+}
+
+
+/* test */
+/*
+form.lrs label > input[type="checkbox"] + span {
+  background: url("icons/check_radio_sheet.png") left top no-repeat;
+}
+
+form.lrs label > input[type="checkbox"]:checked + span {
+  background-position: -19px top;
+}
+
+form.lrs label > input[type="radio"] + span {
+  background: url("icons/check_radio_sheet.png") -38px top no-repeat;
+}
+
+form.lrs label > input[type="radio"]:checked + span {
+  background-position: -57px top;
+}
+*/
+
+
+form.lrs p {
+  font-family: 'Pontano Sans', 'Source Sans Pro', sans-serif;
+  position: relative;
+  min-height: 35px; /* 22px; */
+  margin: 20px 0;
+  padding-top: 3px;
+  padding-left: 170px;
+}
+
+form.lrs p label {
+  float: left;
+  margin-left: -170px; /* margin-top: 4px; */
+  font-size: 14px;
+  /* text-shadow: 0px 0px 1px silver; */
+}
+
+form.lrs p input,
+form.lrs p select,
+form.lrs p label + span,
+form.lrs p label + span label,
+form.lrs p label + label {
+  display: inline-block;
+  float: none;
+  margin-left: 0;
+  /*
+  position: absolute;
+  left: 170px;
+  */
+}
+
+form.lrs p small {
+  display: block;
+  font-size: 14px;
+  font-style: normal;
+  margin-left: 0;
+  /*
+  margin-left: 170px;
+  */
 }

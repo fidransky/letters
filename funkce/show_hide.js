@@ -1,13 +1,6 @@
 function show_hide(id, efect) {
-  var el = $('#'+ id);
-  if (el.css('display') == 'none') {
-    if (efect == true) el.slideDown();
-    else el.show();
-  }
-  else {
-    if (efect == true) el.slideUp();
-    else el.hide();
-  }
+  if (efect == true) $('#'+ id).slideToggle();
+  else $('#'+ id).toggle();
 }
 
 function show(id) {

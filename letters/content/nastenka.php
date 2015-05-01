@@ -10,7 +10,7 @@ if (file_exists("../instalace.php"))
 <!-- box s informací o nainstalované verzi a možných aktualizacích -->
 <div class="box">
 <?php
-echo "Používáte Letters ".$lrs["letters_version"]." ".sprintf("se vzhledem %s", "<a href=\"letters.php?page=nastaveni&co=vzhled\">".$template["name"]."</a>").".<br>";
+echo "Používáte Letters ".$lrs["letters_version"]." ".sprintf("se vzhledem %s", "<a href=\"letters.php?page=vzhled&co=tema\">".$template["name"]."</a>").".<br>";
 
 $data = remote_file_get_contents(LETTERS_WEB_URL."/misc/aktualni_verze.txt");
 if ($data === false)

@@ -5,4 +5,4 @@ Komentáře; Komentáře
 Uživatelé; Uživatelé
 Události; Události
 Fotogalerie; Fotogalerie
-Stránky; Stránky
+Statistiky; Statistiky

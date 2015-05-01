@@ -104,7 +104,7 @@ if (isSet($_POST["edit2"])) {
 
 <form method="post">
 <p>
-<textarea id="code" name="code" wrap="off"><?php echo stripslashes(htmlspecialchars($text)); ?></textarea>
+<textarea id="code" name="code" wrap="off"><?php echo htmlspecialchars($text); ?></textarea>
 </p>
 
 <input type="hidden" name="edit" value="true">

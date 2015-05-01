@@ -4,8 +4,8 @@ new; Články; clanky; koncepty
 new; Články; clanky; pořadník
 new; Články; nastaveni; články
 exists; Články; nastaveni; administrace
-exists; Články; vzhled; index
-exists; Články; vzhled; mainmenu
+exists; Články; nastaveni; index
+exists; Články; nastaveni; mainmenu
 exists; Články; nastaveni; uzivatele
 exists; Články; nastenka; články
 new; Články; kategorie; nová kategorie
@@ -31,8 +31,8 @@ new; Uživatelé; uzivatele; nový uživatel
 new; Uživatelé; nastaveni; uživatelé
 exists; Uživatelé; nastenka; uživatelé
 exists; Uživatelé; nastaveni; detaily
-exists; Uživatelé; vzhled; index
-exists; Uživatelé; vzhled; mainmenu
+exists; Uživatelé; nastaveni; index
+exists; Uživatelé; nastaveni; mainmenu
 exists; Uživatelé; clanky; novy_clanek
 exists; Uživatelé; clanky; publikovane
 exists; Uživatelé; clanky; koncepty
@@ -48,8 +48,8 @@ new; Fotogalerie; fotogalerie; nová fotogalerie
 new; Fotogalerie; fotogalerie; upravit
 exists; Fotogalerie; soubory; novy_soubor
 new; Fotogalerie; nastaveni; fotogalerie
-exists; Fotogalerie; vzhled; index
-exists; Fotogalerie; vzhled; mainmenu
+exists; Fotogalerie; nastaveni; index
+exists; Fotogalerie; nastaveni; mainmenu
 exists; Fotogalerie; nastaveni; uzivatele
 exists; MultiLang; clanky; novy_clanek
 exists; MultiLang; clanky; publikovane
@@ -59,10 +59,3 @@ exists; MultiLang; stranky; nova_stranka
 exists; MultiLang; stranky; upravit
 new; MultiLang; nastaveni; MultiLang
 exists; MultiLang; nastaveni; detaily
-new; Stránky; stranky; nová stránka
-new; Stránky; stranky; upravit
-exists; Stránky; nastaveni; index
-exists; Stránky; nastaveni; mainmenu
-exists; Stránky; nastaveni; uzivatele
-exists; Stránky; nastenka; stránky
-exists; WPCL; vzhled; tema

@@ -18,10 +18,32 @@ list($hide_admin_plugins) = get_settings("hide_admin_plugins", "row");
 ?>
 
 <form method="post">
+<!--
+Stránka po příhlášení
+Pořadí položek menu
+Zobrazit logo letters
+-->
+
 <p>
   <label for="hide_admin_plugins">Skrýt základní doplňky:</label><br>
   <input type="checkbox" name="hide_admin_plugins" id="hide_admin_plugins" value="1" <?php if ($hide_admin_plugins == 1) echo "checked"; ?>>
 </p>
+
+<?php
+/*
+$categories = array();
+
+foreach (get_data("category", "pluginy", array(), "row") as $category)
+  $categories = array_merge($categories, explode(", ", $category[0]));
+
+foreach ($categories as $i => $category) {
+  if (preg_match("/page_/", $category))
+    unset($categories[$i]);
+}
+
+var_dump(array_unique($categories));
+*/
+?>
 
 <?php include_plugin_admin(false, array("action" => "show")); ?>
 

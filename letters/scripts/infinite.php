@@ -20,7 +20,7 @@ foreach ($xml->doplnek as $plugin) {
   echo "<p>".$plugin->popis."</p>";
 
   echo "<ul class=\"meta\">";
-    echo "<li class=\"link\"><a href=\"".LETTERS_WEB_URL."/pluginy/#".$plugin->alias.$sidebar."\" target=\"_blank\" title=\"zobrazit na webu Letters\">zobrazit</a> na webu Letters";
+    echo "<li class=\"link\"><a href=\"".LETTERS_WEB_URL."/doplnky/pluginy/#".$plugin->alias.$sidebar."\" target=\"_blank\" title=\"zobrazit na webu Letters\">zobrazit</a> na webu Letters";
 
     if (empty($plugin->min_lrs) or $plugin->min_lrs <= $lrs["verze"]) { echo "<li class=\"download\"><a href=\"scripts/download.php?f=".$plugin->link."&t=plugin&lrs_version=".$lrs["verze"]."\" title=\"stáhnout plugin do Letters\">stáhnout</a>"; }
     else { echo "<li class=\"download\"><span style=\"color: black; font-size: 1em;\" title=\"plugin vyžaduje minimálně Letters verze ".$plugin->min_lrs."\">stáhnout</span>"; }

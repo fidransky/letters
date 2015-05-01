@@ -15,7 +15,7 @@ function save_data($data, $table, $where=null) {
     $result = mysql_query("INSERT INTO ".DB_PREFIX.$table."(".implode(",", $indexes).") VALUES (".implode(",", $values).")");
   else
     $result = mysql_query("UPDATE ".DB_PREFIX.$table." SET ".implode(",", $set)." WHERE ".$where);
-
+    
   return $result;
 }
 ?>

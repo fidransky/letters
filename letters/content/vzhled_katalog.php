@@ -6,7 +6,7 @@ check_user2("admin", true);
 function strankovani($pocet, $page, $order, $limit) {
   $stranek = ($limit != "all" ? ceil($pocet / $limit) : 1);
 
-  $href = "letters.php?page=pluginy&co=katalog";
+  $href = "letters.php?page=vzhled&co=katalog";
   if (!empty($order)) $href .= "&order=".$order;
   if (!empty($limit)) $href .= "&limit=".$limit;
 
@@ -61,11 +61,11 @@ if (!empty($_GET["search"])) {
 }
 
 // stažení přes katalog
-if (isSet($_GET["downloaded"])) echo "<p class=\"success\">Plugin byl úspěšně stažen.</p>";
+if (isSet($_GET["downloaded"])) echo "<p class=\"success\">Vzhled byl úspěšně stažen.</p>";
 ?>
 
 <form method="get" id="formular" style="float: left;">
-<input type="hidden" name="page" value="pluginy">
+<input type="hidden" name="page" value="vzhled">
 <input type="hidden" name="co" value="katalog">
 
 řadit podle&nbsp;
@@ -90,7 +90,7 @@ položek&nbsp;
 </form>
 
 <form method="get" style="float: right;">
-<input type="hidden" name="page" value="pluginy">
+<input type="hidden" name="page" value="vzhled">
 <input type="hidden" name="co" value="katalog">
 
 <input type="search" name="search" value="<?php echo $search; ?>" required autofocus>
@@ -107,17 +107,17 @@ $('#formular select').change(function(){
 <?php
 $pocet = 0;
 
-if (function_exists("glob")) { $glob = glob(PLUGINS_DIR."*"); }
-else { $glob = glob_alternative(PLUGINS_DIR, "*"); }
+if (function_exists("glob")) { $glob = glob(TEMPLATES_DIR."*"); }
+else { $glob = glob_alternative(TEMPLATES_DIR, "*"); }
 
 foreach ($glob as $plugin) {
-  $available[] = str_replace(array(PLUGINS_DIR, ".php"), null, $plugin);
+  $available[] = str_replace(array(TEMPLATES_DIR, ".php"), null, $plugin);
   $pocet++;
 }
 
 $not = (!empty($available) ? implode(",", $available) : null);
 
-$data = remote_file_get_contents(LETTERS_WEB_URL."/misc/browser.php?limit=".$limit."&offset=".$offset."&order=".$order."&not=".$not."&search=".$search);
+$data = remote_file_get_contents(LETTERS_WEB_URL."/misc/browser.php?type=vzhled&limit=".$limit."&offset=".$offset."&order=".$order."&not=".$not."&search=".$search);
 
 if ($data === false)
   echo "<p class=\"error\">Katalog doplňků se nepodařilo získat.</p>";
@@ -127,24 +127,24 @@ else {
   $xml = simplexml_load_string($data);
 
   if ($xml->pocet == 0)
-    echo "<p class=\"info\">Nejsou k dispozici žádné další pluginy.</p>";
+    echo "<p class=\"info\">Nejsou k dispozici žádné další vzhledy.</p>";
   else {
     $pocet = $xml->pocet;
 
     strankovani($pocet, $page, $order, $limit);
 
-    echo "<p style=\"font-style: italic; color: silver;\">K dispozici ".sklonuj($pocet, "je", "jsou", "je", false)." v této chvíli ".sklonuj($pocet, "další ".$pocet." plugin", "další ".$pocet." pluginy", "dalších ".$pocet." pluginů", false).$text.".</p>";
+    echo "<p style=\"font-style: italic; color: silver;\">K dispozici ".sklonuj($pocet, "je", "jsou", "je", false)." v této chvíli ".sklonuj($pocet, "další ".$pocet." vzhled", "další ".$pocet." vzhledy", "dalších ".$pocet." vzhledů", false).$text.".</p>";
 
     foreach ($xml->doplnek as $plugin) {
       $sidebar = ($plugin->sidebar == "true" ? "_sidebar" : null);
 
-      echo "<div class=\"doplnek plugin\">";
+      echo "<div class=\"doplnek vzhled\">";
       echo "<a name=\"".$plugin->alias."\"></a>";
       echo "<h2>".$plugin->jmeno."</h2>";
       echo "<p>".$plugin->popis."</p>";
 
       echo "<ul class=\"meta\">";
-        echo "<li class=\"link\"><a href=\"".LETTERS_WEB_URL."/doplnky/pluginy/#".$plugin->alias.$sidebar."\" target=\"_blank\" title=\"zobrazit na webu Letters\">zobrazit</a> na webu Letters";
+        echo "<li class=\"link\"><a href=\"".LETTERS_WEB_URL."/doplnky/vzhledy/#".$plugin->alias.$sidebar."\" target=\"_blank\" title=\"zobrazit na webu Letters\">zobrazit</a> na webu Letters";
     
         if (empty($plugin->min_lrs) or $plugin->min_lrs <= $lrs["letters_version"]) { echo "<li class=\"download\"><a href=\"scripts/download.php?f=".$plugin->link."&t=plugin&lrs_version=".$lrs["letters_version"]."\" title=\"stáhnout plugin do Letters\">stáhnout</a>"; }
         else { echo "<li class=\"download\"><span style=\"color: black; font-size: 1em;\" title=\"plugin vyžaduje minimálně Letters verze ".$plugin->min_lrs."\">stáhnout</span>"; }
@@ -152,7 +152,7 @@ else {
 
         if (!empty($plugin->verze) and $plugin->verze != "1.0") { echo "<li class=\"verze\"><span>verze:</span> ".$plugin->verze; }
         if ((!empty($plugin->kategorie) and $plugin->kategorie == "sidebar") or $sidebar == "true") { echo "<li class=\"kategorie\"><span>kategorie:</span> ".$plugin->kategorie; }
-        if (!empty($plugin->vyzaduje)) { echo "<li class=\"vyzaduje\"><span>vyžaduje:</span> plugin <a href=\"letters.php?page=pluginy&co=katalog&search=".$plugin->vyzaduje."\">".$plugin->vyzaduje."</a>"; }
+        if (!empty($plugin->vyzaduje)) { echo "<li class=\"vyzaduje\"><span>vyžaduje:</span> plugin <a href=\"letters.php?page=vzhled&co=katalog&search=".$plugin->vyzaduje."\">".$plugin->vyzaduje."</a>"; }
         if (!empty($plugin->autor)) { echo "<li class=\"autor\"><span>autor:</span> ".$plugin->autor; }
         if (!empty($plugin->url)) { echo "<li class=\"url\"><span>url projektu:</span> <a href=\"".$plugin->url."\" target=\"_blank\">".$plugin->url."</a>"; }
       echo "</ul>";
@@ -183,7 +183,7 @@ $(window).scroll(function(){
     if (curOffset >= pageHeight && load == true) {  // pokud dojedem ke konci stránky a načítání ještě neproběhlo
       load = false;
       $('#loading').show();
-      var url = '<?php echo LETTERS_WEB_URL; ?>/misc/browser.php?limit='+ limit +'&offset='+ offset +'&order=<?php echo $order; ?>&not=<?php echo $not; ?>&search=<?php echo $search; ?>';
+      var url = '<?php echo LETTERS_WEB_URL; ?>/misc/browser.php?type=vzhled&limit='+ limit +'&offset='+ offset +'&order=<?php echo $order; ?>&not=<?php echo $not; ?>&search=<?php echo $search; ?>';
 
       $.ajax({
         type: 'GET',

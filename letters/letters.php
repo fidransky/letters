@@ -157,6 +157,22 @@ function active($id) {
 </nav>
 
 
+<a href="letters.php?page=vzhled&co=<?php echo $def["vzhled"]; ?>" class="button <?php echo active("vzhled"); ?>" id="menu_vzhled">vzhled
+<img src="icons/template.png" class="icon">
+</a>
+
+<nav class="vzhled" <?php if ($page != "vzhled") echo "style=\"display: none\""; ?>>
+  <a href="letters.php?page=vzhled&co=tema">téma</a>
+  <a href="letters.php?page=vzhled&co=index"><?php flag("vzhled->index"); ?>úvodní strana</a>
+  <?php if ($template["main-menu"]) { ?><a href="letters.php?page=vzhled&co=mainmenu"><?php flag("vzhled->mainmenu"); ?>main-menu</a><?php } ?>
+  <a href="letters.php?page=vzhled&co=layout"><?php flag("vzhled->layout"); ?>rozložení</a>
+  <a href="letters.php?page=vzhled&co=aktualizace">aktualizace</a>
+  <a href="letters.php?page=vzhled&co=katalog">katalog</a>
+  <a href="letters.php?page=vzhled&co=editor">editor</a>
+  <?php get_podmenu("vzhled"); ?>
+</nav>
+
+
 <a href="letters.php?page=nastaveni&co=<?php echo $def["nastaveni"]; ?>" class="button <?php echo active("nastaveni"); ?>" id="menu_nastaveni">nastavení
 <?php flag("nastaveni"); ?>
 <img src="icons/settings.png" class="icon">
@@ -164,10 +180,6 @@ function active($id) {
 
 <nav class="nastaveni" <?php if ($page != "nastaveni") echo "style=\"display: none\""; ?>>
   <a href="letters.php?page=nastaveni&co=detaily"><?php flag("nastaveni->detaily"); ?>detaily</a>
-  <a href="letters.php?page=nastaveni&co=index"><?php flag("nastaveni->index"); ?>úvodní strana</a>
-  <?php if ($template["main-menu"]) { ?><a href="letters.php?page=nastaveni&co=mainmenu"><?php flag("nastaveni->mainmenu"); ?>main-menu</a><?php } ?>
-  <?php if ($template["sidebar"]) { ?><a href="letters.php?page=nastaveni&co=sidebar"><?php flag("nastaveni->sidebar"); ?>sidebar</a><?php } ?>
-  <a href="letters.php?page=nastaveni&co=vzhled"><?php flag("nastaveni->vzhled"); ?>vzhled</a>
   <a href="letters.php?page=nastaveni&co=udrzba"><?php flag("nastaveni->udrzba"); ?>údržba</a>
   <a href="letters.php?page=nastaveni&co=administrace"><?php flag("nastaveni->administrace"); ?>administrace</a>
   <?php get_podmenu("nastaveni"); ?>
@@ -177,39 +189,23 @@ function active($id) {
 <!-- konec menu -->
 
 <script>
-var was;
-var last;
-
-$('nav').each(function(){
-  if ($(this).is(':visible')) {
-    was = $(this).attr('class');
-    return false; // ukončení smyčky
-  }
+var active;
+$('a.button').each(function(){
+  if ($(this).hasClass('active')) active = $(this).attr('id').replace('menu_', '');
 });
-
-$('a.button').mouseenter(function(){
-  $(this).addClass('hover');
+  
+$('a.button').click(function(e){
+  if (e.which != 1) return; // stop executing if not left click
+  
   thiz = $(this).attr('id').replace('menu_', '');
-  if (thiz != last)
-    $('nav.'+ thiz).slideDown(300).show();
-  else
-    $('nav.'+ thiz).show();
-}).mouseleave(function(){
-  last = null;
-  $('a.button#menu_'+ thiz).removeClass('hover');
-  $('nav.'+ thiz).hide();
-  $('nav.'+ was).show();
-});
+  if (thiz == active) return;
+  if (thiz != 'nastenka') e.preventDefault();
+  
+  $('a.button').not(this).removeClass('hover');
+  $('nav').not('nav.'+ thiz).not('nav.'+ active).slideUp(200);
 
-$('nav').mouseenter(function(){
-  $(this).show();
-  thiz = $(this).attr('class');
-  last = thiz;
-  $('a.button#menu_'+ thiz).addClass('hover');
-}).mouseleave(function() {
-  $(this).hide();
-  $('nav.'+ was).show();
-  $('a.button#menu_'+ thiz).removeClass('hover');
+  $(this).toggleClass('hover');
+  $('nav.'+ thiz).slideToggle(200);
 });
 </script>
 
@@ -233,6 +229,8 @@ include ("content.php");
 
 if (isset($_GET["page"])) {
   include_plugin_admin();
+  
+  echo "<br class=\"cleaner\">";
   
   // nastavení výchozí stránky pro menu
   if (isSet($_GET["co"]) and $def[$_GET["page"]] != $_GET["co"] and check_user2("admin", 0)) {
@@ -269,9 +267,8 @@ if (isset($_GET["page"])) {
 </div>
 
 <script>
-$('small').each(function(index) {
-  var content = $(this).text();
-  $(this).attr('title', content);
+$('small').each(function(){
+  $(this).attr('title', $(this).text());
 });
 </script>
 
