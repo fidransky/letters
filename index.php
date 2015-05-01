@@ -1,13 +1,8 @@
 <?php
 // přesměrování na instalaci
-if (file_exists("instalace.php") and !file_exists("letters/config.php"))
+if (file_exists("instalace.php") and !file_exists("letters/config.php")) {
   header("Location: instalace.php");
-
-/*
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-*/
-
+}
 
 session_start();
 
@@ -31,8 +26,7 @@ define("TEMPLATES_DIR", "vzhledy/");
 
 include ("includes.php");
 
-
-// v produkční verzi smazat - jenom pro fungující localhost v síti (nahrazuje localhost IP adresou počítače)
+// to-do: v produkční verzi smazat - jenom pro fungující localhost v síti (nahrazuje localhost IP adresou počítače)
 if ($_SERVER["SERVER_NAME"] != "localhost")
   $lrs["address"] = str_replace("localhost", $_SERVER["SERVER_NAME"], $lrs["address"]);
   

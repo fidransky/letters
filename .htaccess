@@ -10,7 +10,7 @@ RewriteEngine On
 
 # oprava vic uvodnich stranek se stejnym obsahem
 RewriteCond %{QUERY_STRING} ^$
-RewriteRule ^index\.php$ [INSERT_URL] [R=301,L]
+RewriteRule ^index\.php$ http://localhost:8080/letters [R=301,L]
 
 # kategorie
 RewriteCond %{REQUEST_FILENAME} !-f

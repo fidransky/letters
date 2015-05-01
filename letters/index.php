@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-ini_set("display_errors", true); 
-error_reporting(E_ALL);
-
 // odhlášení
 if ((isSet($_GET["logout"]) or isSet($_GET["autologout"])) and isSet($_SESSION["log"])) {
   // mazání sessions
@@ -44,9 +41,7 @@ define("PLUGINS_DIR", "../pluginy/");
 include (FCE_DIR."get_data.php");
 include (FCE_DIR."lang.php");
 include (FCE_DIR."include_plugins.php");
-?>
-
-<!doctype html>
+?><!doctype html>
 
 <html>
 

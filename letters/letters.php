@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+
+ini_set("display_errors", 0); 
+error_reporting(E_ALL);
+
+
 // přihlášení
 if (!isset($_SESSION["log"])) {
   header("Location: index.php?unauthorized");
@@ -16,7 +21,7 @@ if (!isset($_SESSION["log"])) {
 define("FCE_DIR", "../funkce/");
 define("PLUGINS_DIR", "../pluginy/");
 define("TEMPLATES_DIR", "../vzhledy/");
-define("LETTERS_WEB_URL", "http://letters.cz");
+define("LETTERS_WEB_URL", "http://rs.pavelfidransky.cz");
 
 include (FCE_DIR."get_data.php");
 include (FCE_DIR."save_data.php");
@@ -68,10 +73,8 @@ if (isSet($_COOKIE["plugin_updates"]) or ($_GET["page"] == "pluginy" and $_GET["
 
   setcookie("plugin_updates", $plugin_updates);
 }
-?>
+?><!doctype html>
 
-
-<!doctype html>
 <html lang="cs" id="lrs_top">
 
 <head>
